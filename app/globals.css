@@ -1,0 +1,223 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Sentinel AI — Dark Cyber Theme (always dark) */
+  --background: oklch(0.08 0.01 240);
+  --foreground: oklch(0.96 0.005 220);
+  --card: oklch(0.11 0.015 240);
+  --card-foreground: oklch(0.96 0.005 220);
+  --popover: oklch(0.11 0.015 240);
+  --popover-foreground: oklch(0.96 0.005 220);
+  --primary: oklch(0.65 0.22 220);
+  --primary-foreground: oklch(0.08 0.01 240);
+  --secondary: oklch(0.15 0.02 240);
+  --secondary-foreground: oklch(0.85 0.01 220);
+  --muted: oklch(0.15 0.015 240);
+  --muted-foreground: oklch(0.55 0.01 220);
+  --accent: oklch(0.6 0.2 195);
+  --accent-foreground: oklch(0.08 0.01 240);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.96 0.005 220);
+  --border: oklch(0.2 0.02 240);
+  --input: oklch(0.15 0.02 240);
+  --ring: oklch(0.65 0.22 220);
+
+  /* Cyber-specific tokens */
+  --neon-blue: oklch(0.65 0.22 220);
+  --neon-cyan: oklch(0.75 0.18 195);
+  --neon-glow: oklch(0.65 0.22 220 / 0.3);
+  --glass-bg: oklch(0.12 0.015 240 / 0.7);
+  --glass-border: oklch(0.35 0.05 220 / 0.4);
+  --grid-color: oklch(0.25 0.03 240 / 0.4);
+
+  --chart-1: oklch(0.65 0.22 220);
+  --chart-2: oklch(0.75 0.18 195);
+  --chart-3: oklch(0.55 0.22 25);
+  --chart-4: oklch(0.7 0.15 150);
+  --chart-5: oklch(0.6 0.2 270);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
+  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-cyan: var(--neon-cyan);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-color: oklch(0.08 0.01 240);
+  }
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(oklch(0.25 0.03 240 / 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.25 0.03 240 / 0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Glassmorphism */
+.glass {
+  background: oklch(0.12 0.015 240 / 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid oklch(0.35 0.05 220 / 0.3);
+}
+
+.glass-card {
+  background: oklch(0.11 0.015 240 / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.3 0.04 220 / 0.4);
+}
+
+/* Neon glow effects */
+.neon-text {
+  color: oklch(0.65 0.22 220);
+  text-shadow: 0 0 20px oklch(0.65 0.22 220 / 0.6), 0 0 60px oklch(0.65 0.22 220 / 0.3);
+}
+
+.neon-border {
+  border-color: oklch(0.65 0.22 220 / 0.5);
+  box-shadow: 0 0 20px oklch(0.65 0.22 220 / 0.15), inset 0 0 20px oklch(0.65 0.22 220 / 0.05);
+}
+
+.neon-glow-btn {
+  box-shadow: 0 0 20px oklch(0.65 0.22 220 / 0.4), 0 0 60px oklch(0.65 0.22 220 / 0.15);
+}
+
+.neon-glow-btn:hover {
+  box-shadow: 0 0 30px oklch(0.65 0.22 220 / 0.6), 0 0 80px oklch(0.65 0.22 220 / 0.25);
+}
+
+/* Ambient orb */
+.orb {
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated gradient border */
+@keyframes borderGlow {
+  0%, 100% { border-color: oklch(0.65 0.22 220 / 0.5); }
+  50% { border-color: oklch(0.75 0.18 195 / 0.7); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+.animate-border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* Progress bar animation */
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: var(--progress-width); }
+}
+
+.progress-bar {
+  animation: progressFill 2s ease-out forwards;
+  animation-delay: 0.5s;
+  width: 0%;
+}
+
+/* Typing cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: oklch(0.65 0.22 220);
+  margin-left: 2px;
+}
